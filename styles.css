@@ -1,18 +1,114 @@
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: Arial;
+    background-color: gray;
+}
+
+body {
+    margin: 0rem 10vw;
+    background-color: white;
+}
+
+.navbar {
+    position: static;
+    height: 15vh;
+    padding: 1rem 2rem;
+}
+
+.navbar-brand {
+    height: 100%;
+}
+
+.logo {
+    width: auto;
+    height: 100%;
+}
+
+#disconnect {
+    display: none;
+}
+
+#connect.connected {
+    display: none;
+}
+
+#disconnect.connected {
+    display: inline-block;
+}
+
+main {
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-height: 670px) {
+    .navbar {
+        height: 100px;
+    }
+
+    main {
+        min-height: 500px;
+        height: calc(100vh - 100px);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        margin: 0;
+    }
+}
+
+.winch-box {
+    width: 400px;
+    height: auto;
+    margin: 1rem;
+    border: 2px solid black;
+    text-align: center;
+    user-select: none;
+}
+
+.title {
+    border-bottom: 2px solid black;
+    padding: 0.5rem;
+    font-size: 2.0rem;
+    font-weight: normal;
+}
+
+.winch-controls {
+    margin: auto;
+    padding: 1rem;
+}
+
 .arrow-wrap {
-    width: 15vw;
+    width: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
 
-.up-arrow, .down-arrow {
+.arrow {
     flex: 1; 
     width: 100%;
     height: 100%;
 }
 
-.up-arrow:hover, .down-arrow:hover {
+.arrow:hover.connected {
     cursor: pointer;
+}
+
+.arrow:active.connected {
     filter: invert(11%) sepia(99%) saturate(6875%) hue-rotate(1deg) brightness(108%) contrast(111%);
+}
+
+.speed-display {
+    display: inline-block;
+    font-size: 2rem;
+}
+
+#speed {
+    font-weight: bold;
 }

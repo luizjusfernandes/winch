@@ -1,90 +1,119 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en-CA">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="bootstrap-5.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="styles.css">
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
         <title>Winch Controller</title>
     </head>
     <body>
+        <nav class="navbar bg-light sticky-top">
+            <div class="navbar-brand">
+                <img class="logo" alt="amundsen science logo" src="images/logo.png">
+            </div>
+            <div class="nav-item">
+                <button class="btn btn-secondary btn-lg" type="button" id="setup">Setup</button>
+                <button class="btn btn-success btn-lg" type="button" id="connect">Connect</button>
+                <button class="btn btn-danger btn-lg" type="button" id="disconnect">Disconnect</button>
+            </div>
+        </nav>
         <main>
-            <div class="arrow-wrap">
-                <svg class="up-arrow" version="1.0" xmlns="http://www.w3.org/2000/svg"
-                width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
-                preserveAspectRatio="xMidYMid meet">
-                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-                    fill="#000000" stroke="none">
-                        <path d="M2460 3939 c-35 -15 -304 -279 -1223 -1197 -648 -647 -1189 -1196
-                        -1203 -1218 -56 -95 -38 -211 46 -295 29 -29 63 -52 86 -58 55 -15 4733 -15
-                        4788 0 23 6 57 29 86 58 84 84 102 200 46 295 -14 22 -555 571 -1203 1218
-                        -919 918 -1188 1182 -1223 1197 -28 13 -66 21 -100 21 -34 0 -72 -8 -100 -21z"/>
-                    </g>
-                    <text x="50%" y="55%" dominant-baseline="middle" fill="#ffffff" font-size="150" text-anchor="middle">+</text>
-                </svg>
+            <div class="winch-box">
+                <h1 class="title">Winch Control</h1>
+                <div class="winch-controls">
+                    <div class="arrow-wrap">
+                        
+                        <svg class="arrow" id="double-up-arrow" xmlns="http://www.w3.org/2000/svg"
+                        width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+                        preserveAspectRatio="xMidYMid meet">
+                            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                            fill="#000000" stroke="none">
+                                <path d="M2494 5106 c-37 -16 -1749 -1555 -1784 -1604 l-25 -35 0 -561 c0
+                                -627 -3 -596 72 -653 31 -24 46 -28 98 -28 51 0 68 5 96 27 19 14 387 344 818
+                                732 432 388 787 706 791 706 4 0 360 -318 791 -706 431 -389 799 -718 818
+                                -733 28 -21 45 -26 96 -26 52 0 67 4 98 28 75 57 72 26 72 653 l0 561 -25 35
+                                c-37 52 -1749 1588 -1787 1604 -40 17 -89 17 -129 0z"/>
+                                <path d="M2494 2886 c-40 -18 -1738 -1542 -1779 -1597 l-30 -41 0 -561 c0
+                                -628 -3 -597 71 -654 52 -39 133 -40 190 -1 21 14 392 344 823 732 431 388
+                                787 706 791 706 4 0 360 -318 791 -706 431 -388 801 -717 821 -731 53 -36 112
+                                -40 168 -11 56 29 87 74 95 141 3 29 5 284 3 567 -3 486 -4 517 -22 546 -25
+                                42 -1725 1572 -1778 1602 -46 25 -98 28 -144 8z"/>
+                            </g>
+                        </svg>
     
-                <svg class="down-arrow" version="1.0" xmlns="http://www.w3.org/2000/svg"
-                width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
-                preserveAspectRatio="xMidYMid meet">
-                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-                    fill="#000000" stroke="none">
-                        <path d="M161 3949 c-18 -6 -54 -31 -81 -58 -84 -84 -102 -200 -46 -295 14
-                        -22 555 -571 1203 -1218 919 -918 1188 -1182 1223 -1197 59 -27 141 -27 200 0
-                        35 15 304 279 1223 1197 648 647 1189 1196 1203 1218 56 95 38 211 -46 295
-                        -29 29 -63 52 -86 58 -51 14 -4743 14 -4793 0z"/>
-                    </g>
-                    <text x="50%" y="55%" dominant-baseline="middle" fill="#ffffff" font-size="150" text-anchor="middle">-</text>
-                </svg>
+    
+                        <svg class="arrow" id="up-arrow" xmlns="http://www.w3.org/2000/svg"
+                        width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+                        preserveAspectRatio="xMidYMid meet">
+                            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                            fill="#000000" stroke="none">
+                                <path d="M2460 3939 c-35 -15 -304 -279 -1223 -1197 -648 -647 -1189 -1196
+                                -1203 -1218 -56 -95 -38 -211 46 -295 29 -29 63 -52 86 -58 55 -15 4733 -15
+                                4788 0 23 6 57 29 86 58 84 84 102 200 46 295 -14 22 -555 571 -1203 1218
+                                -919 918 -1188 1182 -1223 1197 -28 13 -66 21 -100 21 -34 0 -72 -8 -100 -21z"/>
+                            </g>
+                        </svg>
+                        
+                        
+                        <svg class="arrow" id="down-arrow" xmlns="http://www.w3.org/2000/svg"
+                        width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+                        preserveAspectRatio="xMidYMid meet">
+                            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                            fill="#000000" stroke="none">
+                                <path d="M161 3949 c-18 -6 -54 -31 -81 -58 -84 -84 -102 -200 -46 -295 14
+                                -22 555 -571 1203 -1218 919 -918 1188 -1182 1223 -1197 59 -27 141 -27 200 0
+                                35 15 304 279 1223 1197 648 647 1189 1196 1203 1218 56 95 38 211 -46 295
+                                -29 29 -63 52 -86 58 -51 14 -4743 14 -4793 0z"/>
+                            </g>
+                        </svg>
+    
+                        <svg class="arrow" id="double-down-arrow" xmlns="http://www.w3.org/2000/svg"
+                        width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000"
+                        preserveAspectRatio="xMidYMid meet">
+                            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                            fill="#000000" stroke="none">
+                            <path d="M780 5098 c-56 -29 -87 -74 -95 -141 -3 -29 -5 -284 -3 -567 3 -486
+                            4 -517 22 -546 25 -42 1725 -1572 1778 -1601 47 -26 94 -29 142 -9 41 17 1738
+                                1539 1781 1597 l30 41 0 561 c0 628 3 597 -71 654 -52 39 -133 40 -190 1 -21
+                                -14 -392 -344 -823 -732 -431 -388 -787 -706 -791 -706 -4 0 -360 318 -791
+                                706 -431 388 -801 717 -821 731 -53 36 -112 40 -168 11z"/>
+                                <path d="M782 2884 c-44 -23 -79 -66 -92 -115 -7 -26 -10 -219 -8 -578 l3
+                                -538 25 -35 c37 -52 1749 -1588 1787 -1604 41 -18 85 -18 126 0 38 16 1750
+                                1552 1787 1604 l25 35 0 561 c0 627 3 596 -72 653 -31 24 -46 28 -98 28 -51 0
+                                -68 -5 -96 -27 -19 -14 -387 -344 -818 -732 -432 -388 -787 -706 -791 -706 -4
+                                0 -360 318 -791 706 -431 389 -798 717 -816 731 -42 32 -125 41 -171 17z"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="speed-display">
+                        Speed: <span id="speed">0.0</span>
+                    </div>
+                </div>
             </div>
 
-            <input id="speed" type="number" readonly value="0.0">
-
+            <!-- Error modal -->
+            <div class="modal fade" id="error" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="errorLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="errorLabel">Error!</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="error-message" class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Understood</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
-        <script>
-            // Winch speed value (private)
-            let _speed = 0;
-
-            // Getters and setters for speed property
-            Object.defineProperty(window, 'speed', {
-                get: function () {return _speed;},
-                set: function (value) {
-                    // Change private property (withing range)
-                    if (value < -10) _speed = -10;
-                    else if (value > 10) _speed = 10;
-                    else _speed = value;
-
-                    // Update input element in html
-                    const input = document.querySelector('#speed');
-                    input.value = _speed.toFixed(1);
-                }
-            });
-
-            const upArrow = document.querySelector('.up-arrow');
-            const downArrow = document.querySelector('.down-arrow');
-
-            // Click on up-arrow
-            upArrow.addEventListener('click', () => arrowClick(true));
-
-            // Hold-click on up-arrow
-            upArrow.addEventListener('mousedown', () => arrowHold(true));
-
-            // Click on down-arrow
-            downArrow.addEventListener('click', () => arrowClick(false));
-
-            // Hold-click on down-arrow
-            downArrow.addEventListener('mousedown', () => arrowHold(false));
-
-            function arrowClick(direction) {
-                speed += direction ? 0.2 : -0.2;
-            }
-
-            function arrowHold(direction) {
-                interval = setInterval(() => speed += direction ? 1.0 : -1.0, 500);
-                document.body.addEventListener('mouseup', () => {
-                    clearInterval(interval);
-                });
-            }
-
-        </script>
+        
+        <script src="bootstrap-5.2.0/js/bootstrap.bundle.min.js"></script>
+        <script src="renderer.js"></script>
     </body>
 </html>
